@@ -1,1 +1,7 @@
 rootProject.name = 'kt-stately'
+
+include ':kt-specifics'
+project(':kt-specifics').projectDir = new File(settingsDir, '..\\kt-specifics')
+
+include ':kt-toolbox'
+project(':kt-toolbox').projectDir = new File(settingsDir, '..\\kt-toolbox')

@@ -5,11 +5,12 @@ buildscript {
     ext.expekt_version         = '0.5.0'
     ext.gradle_version         = '3.2.1'
     ext.jmockit_version        = '1.29'
-    ext.junit_platform_version = '1.0.0-M2'
-    ext.junit_version          = '5.0.0-M2'
+    ext.junit_platform_version = '1.0.0-M3'
+    ext.junit_version          = '5.0.0-M3'
     ext.kotlin_repository      = 'https://dl.bintray.com/kotlin/kotlin-eap-1.1'
     ext.kotlin_version         = '1.1-M03'
-    ext.spek_version           = '1.0.89'
+    ext.rx_kotlin              = '0.60.0'
+    ext.spek_version           = '1.1.0-beta2'
 
     repositories {
         mavenCentral()
@@ -31,8 +32,10 @@ sourceSets {
 }
 
 junitPlatform {
-    engines {
-        include 'spek'
+    filters {
+        engines {
+            include 'spek'
+        }
     }
 }
 
@@ -43,6 +46,9 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile project(':kt-specifics')
+    compile project(':kt-toolbox')
+    compile "io.reactivex:rxkotlin:$rx_kotlin"
 
     testCompile "com.winterbe:expekt:$expekt_version"
     testCompile "org.jmockit:jmockit:$jmockit_version"
